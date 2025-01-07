@@ -12,8 +12,8 @@ import { BellRing, Check } from "lucide-react";
 
 const Questen = () => {
   return (
-    <div>
-      <Card className={cn("w-[380px]")}>
+    <div className="mx-auto">
+      <Card className={cn("w-[380px] mx-auto")}>
         <CardHeader>
           <CardTitle>Notifications</CardTitle>
           <CardDescription>You have 3 unread messages.</CardDescription>

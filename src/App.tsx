@@ -3,7 +3,9 @@ import Questen from "./Home/Questen";
 function App() {
   return (
     <>
-      <Questen />
+      <div className="max-w-6xl mx-auto px-5 py-10">
+        <Questen />
+      </div>
     </>
   );
 }
