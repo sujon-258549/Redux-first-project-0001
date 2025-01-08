@@ -3,41 +3,51 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { BellRing, Check } from "lucide-react";
+import { setAnswer } from "@/redux/features/quiz/quizSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import QuizeControl from "./QuizeControl";
 
 const Questen = () => {
+  const dispatch = useAppDispatch();
+  const { question, currentIndexForQuize } = useAppSelector(
+    (select) => select.quiz
+  );
+  const currentQiestenData = question[currentIndexForQuize];
+
+  const handelSelectAnswer = (answer: string) => {
+    dispatch(setAnswer({ qustionIndex: currentIndexForQuize, answer }));
+  };
+
   return (
     <div className="mx-auto">
+      <h1 className="text-2xl mb-5 md:mb-10 md:text-4xl lg:text-6xl text-center font-bold ">
+        Qwiz App ln Banglades
+      </h1>
       <Card className={cn("w-[380px] mx-auto")}>
         <CardHeader>
-          <CardTitle>Notifications</CardTitle>
-          <CardDescription>You have 3 unread messages.</CardDescription>
+          <CardTitle>{currentQiestenData.question}</CardTitle>
+          <CardDescription>
+            {" "}
+            <span className="mr-1">Question</span>
+            {currentIndexForQuize + 1} of {question.length}
+          </CardDescription>
         </CardHeader>
-        <CardContent className="grid gap-4">
-          <div className=" flex items-center space-x-4 rounded-md border p-4">
-            <BellRing />
-            <div className="flex-1 space-y-1">
-              <p className="text-sm font-medium leading-none">
-                Push Notifications
-              </p>
-              <p className="text-sm text-muted-foreground">
-                Send notifications to device.
-              </p>
-            </div>
-            <switch />
-          </div>
-          <div></div>
+        <CardContent className="">
+          {currentQiestenData.options.map((questenOption, index) => (
+            <Button
+              key={index}
+              onClick={() => handelSelectAnswer(questenOption)}
+              className="w-full mt-4"
+            >
+              {questenOption}
+            </Button>
+          ))}
         </CardContent>
-        <CardFooter>
-          <Button className="w-full">
-            <Check /> Mark all as read
-          </Button>
-        </CardFooter>
+        <QuizeControl></QuizeControl>
       </Card>
     </div>
   );

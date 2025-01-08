@@ -1,4 +1,4 @@
-export const auizeData = [
+export const quizeData = [
   {
     id: 1,
     question: "বাংলাদেশের রাজধানী কোনটি?",
