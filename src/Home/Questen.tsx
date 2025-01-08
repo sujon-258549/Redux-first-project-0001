@@ -9,48 +9,49 @@ import {
 import { cn } from "@/lib/utils";
 import { setAnswer } from "@/redux/features/quiz/quizSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import QuizeControl from "./QuizeControl";
+import QuizControl from "./QuizeControl";
 
-const Questen = () => {
+const Question = () => {
   const dispatch = useAppDispatch();
-  const { question, currentIndexForQuize } = useAppSelector(
+  const { question, currentIndexForQuiz, userAnswer } = useAppSelector(
     (select) => select.quiz
   );
-  const currentQiestenData = question[currentIndexForQuize];
-
+  const currentQuestedData = question[currentIndexForQuiz];
+  const currentAnswer = userAnswer[currentIndexForQuiz];
   const handelSelectAnswer = (answer: string) => {
-    dispatch(setAnswer({ qustionIndex: currentIndexForQuize, answer }));
+    dispatch(setAnswer({ questionIndex: currentIndexForQuiz, answer }));
   };
 
   return (
     <div className="mx-auto">
       <h1 className="text-2xl mb-5 md:mb-10 md:text-4xl lg:text-6xl text-center font-bold ">
-        Qwiz App ln Banglades
+        Quiz App ln Bangladesh
       </h1>
       <Card className={cn("w-[380px] mx-auto")}>
         <CardHeader>
-          <CardTitle>{currentQiestenData.question}</CardTitle>
+          <CardTitle>{currentQuestedData.question}</CardTitle>
           <CardDescription>
             {" "}
             <span className="mr-1">Question</span>
-            {currentIndexForQuize + 1} of {question.length}
+            {currentIndexForQuiz + 1} of {question.length}
           </CardDescription>
         </CardHeader>
         <CardContent className="">
-          {currentQiestenData.options.map((questenOption, index) => (
+          {currentQuestedData.options.map((questedOption, index) => (
             <Button
               key={index}
-              onClick={() => handelSelectAnswer(questenOption)}
+              onClick={() => handelSelectAnswer(questedOption)}
               className="w-full mt-4"
+              variant={questedOption === currentAnswer ? "default" : "outline"}
             >
-              {questenOption}
+              {questedOption}
             </Button>
           ))}
         </CardContent>
-        <QuizeControl></QuizeControl>
+        <QuizControl></QuizControl>
       </Card>
     </div>
   );
 };
 
-export default Questen;
+export default Question;

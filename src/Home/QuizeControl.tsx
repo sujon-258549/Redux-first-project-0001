@@ -1,21 +1,23 @@
 import { Button } from "@/components/ui/button";
-import { nextQuesten } from "@/redux/features/quiz/quizSlice";
+import { nextQuestion, prevQuestion } from "@/redux/features/quiz/quizSlice";
 import { useAppDispatch } from "@/redux/hooks";
 // import { CardFooter } from "@/components/ui/card";
 
-const QuizeControl = () => {
+const QuizControl = () => {
   const dispatch = useAppDispatch();
-  const handeldelprevuous = () => {
-    dispatch(nextQuesten());
+  const handelPrevious = () => {
+    dispatch(prevQuestion());
   };
-  const handeldelNext = () => {
-    dispatch(nextQuesten());
+  const handledNext = () => {
+    dispatch(nextQuestion());
   };
   return (
     // <CardFooter>
     <div className="flex justify-between px-6 pb-5">
-      <Button className="">Pre</Button>
-      <Button onClick={handeldelNext} className="">
+      <Button onClick={handelPrevious} className="">
+        Pre
+      </Button>
+      <Button onClick={handledNext} className="">
         Next
       </Button>
     </div>
@@ -23,4 +25,4 @@ const QuizeControl = () => {
   );
 };
 
-export default QuizeControl;
+export default QuizControl;
