@@ -8,6 +8,8 @@ const QuizControl = () => {
     (select) => select.quiz
   );
   const isExistNotSelectQuestion = userAnswer[currentIndexForQuiz] === null;
+  const isCompletedQuiz =
+    isExistNotSelectQuestion || currentIndexForQuiz !== question.length - 1;
   const dispatch = useAppDispatch();
   const handelPrevious = () => {
     dispatch(prevQuestion());
@@ -35,7 +37,7 @@ const QuizControl = () => {
         </Button>
       )}
       {currentIndexForQuiz === question.length - 1 && (
-        <Button onClick={handledNext} className="">
+        <Button disabled={isCompletedQuiz} onClick={handledNext} className="">
           Completed quiz
         </Button>
       )}

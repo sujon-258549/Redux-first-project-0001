@@ -7,14 +7,14 @@ type TInitialState = {
   question: typeof quizData;
   currentIndexForQuiz: number;
   userAnswer: (string | null)[];
-  isCompleted: boolean;
+  isCompletedQuiz: boolean;
 };
 
 const initialState: TInitialState = {
   question: quizData,
   currentIndexForQuiz: 0,
   userAnswer: Array(quizData.length).fill(null),
-  isCompleted: false,
+  isCompletedQuiz: false,
 };
 export const quizSlice = createSlice({
   name: "quiz",
@@ -34,7 +34,11 @@ export const quizSlice = createSlice({
         state.currentIndexForQuiz -= 1;
       }
     },
+    completedQuiz: (state) => {
+      state.isCompletedQuiz = true;
+    },
   },
 });
-export const { setAnswer, nextQuestion, prevQuestion } = quizSlice.actions;
+export const { setAnswer, nextQuestion, prevQuestion, completedQuiz } =
+  quizSlice.actions;
 export default quizSlice.reducer;
