@@ -5,6 +5,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
 import { cn } from "@/lib/utils";
 import { useAppSelector } from "@/redux/hooks";
 
@@ -15,7 +16,11 @@ const QuizSummery = () => {
     return qus.correctAnswer === userAnswer[index] ? count + 1 : count;
   }, 0);
 
-  console.log(isCorrectAnswer);
+  const currentParsentense = parseFloat(
+    ((isCorrectAnswer / question.length) * 100).toFixed(2)
+  );
+
+  console.log(currentParsentense);
 
   return (
     <div>
@@ -24,11 +29,14 @@ const QuizSummery = () => {
           <CardHeader>
             <CardTitle>
               You got {isCorrectAnswer} out of
-              {question.length}
+              <span className="ml-1"> {question.length}</span>
             </CardTitle>
             <CardDescription>
-              {" "}
-              <span className="mr-1">Question</span>
+              {/* progressbar */}
+              <div>
+                <Progress value={currentParsentense} />
+              </div>
+              {/* <span className="mr-1">Question</span> */}
               {/* {currentIndexForQuiz + 1} of {question.length} */}
             </CardDescription>
           </CardHeader>
