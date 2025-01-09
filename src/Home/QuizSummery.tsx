@@ -1,6 +1,6 @@
+import { Button } from "@/components/ui/button";
 import {
   Card,
-  CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
@@ -34,7 +34,13 @@ const QuizSummery = () => {
             <CardDescription>
               {/* progressbar */}
               <div className="mt-5">
-                <Progress value={currentParsentense} />
+                <Progress
+                  className="bg-yellow-600 "
+                  value={currentParsentense}
+                />
+              </div>
+              <div className="mx-auto pt-5">
+                <Button className="bg-green-500">Thank you </Button>
               </div>
               {/* <span className="mr-1">Question</span> */}
               {/* {currentIndexForQuiz + 1} of {question.length} */}
