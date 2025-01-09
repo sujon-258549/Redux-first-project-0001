@@ -24,9 +24,6 @@ const Question = () => {
 
   return (
     <div className="mx-auto">
-      <h1 className="text-2xl mb-5 md:mb-10 md:text-4xl lg:text-6xl text-center font-bold ">
-        Quiz App ln Bangladesh
-      </h1>
       <Card className={cn("w-[380px] mx-auto")}>
         <CardHeader>
           <CardTitle>{currentQuestedData.question}</CardTitle>

@@ -1,5 +1,9 @@
 import { Button } from "@/components/ui/button";
-import { nextQuestion, prevQuestion } from "@/redux/features/quiz/quizSlice";
+import {
+  completedQuiz,
+  nextQuestion,
+  prevQuestion,
+} from "@/redux/features/quiz/quizSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 // import { CardFooter } from "@/components/ui/card";
 
@@ -16,6 +20,9 @@ const QuizControl = () => {
   };
   const handledNext = () => {
     dispatch(nextQuestion());
+  };
+  const handleQuizCompleted = () => {
+    dispatch(completedQuiz());
   };
   return (
     // <CardFooter>
@@ -37,7 +44,11 @@ const QuizControl = () => {
         </Button>
       )}
       {currentIndexForQuiz === question.length - 1 && (
-        <Button disabled={isCompletedQuiz} onClick={handledNext} className="">
+        <Button
+          disabled={isCompletedQuiz}
+          onClick={handleQuizCompleted}
+          className=""
+        >
           Completed quiz
         </Button>
       )}
