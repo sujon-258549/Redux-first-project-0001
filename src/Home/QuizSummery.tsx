@@ -33,7 +33,7 @@ const QuizSummery = () => {
             </CardTitle>
             <CardDescription>
               {/* progressbar */}
-              <div>
+              <div className="mt-5">
                 <Progress value={currentParsentense} />
               </div>
               {/* <span className="mr-1">Question</span> */}
