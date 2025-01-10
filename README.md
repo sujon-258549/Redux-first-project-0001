@@ -17,3 +17,5 @@ https://redux.js.org/tutorials/quick-start
 <!-- store create  -->
 
 https://redux.js.org/tutorials/typescript-quick-start
+
+<!-- end quiz project -->
