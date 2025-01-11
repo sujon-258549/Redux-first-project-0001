@@ -1,8 +1,8 @@
 usingt vite redux projet
 
 step frlow
-1.npm create vite@letest
-2.select project type // redux 3. select typescrypt and js
+1.npm create vite@latest
+2.select project type // redux 3. select typescript and js
 and cd > code . using and go vs cod
 
 <!-- flow and install tailwind css -->
